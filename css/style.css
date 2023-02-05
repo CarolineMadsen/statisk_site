@@ -1,3 +1,7 @@
+:root {
+  --off-color: red;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -100,7 +104,7 @@ html {
     margin-bottom: 1rem;
   }
   .discounted p:last-child {
-    background: var(--off-color);
+    background: (red);
     padding: 0.2rem;
   }
   

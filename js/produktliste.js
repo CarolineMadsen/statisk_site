@@ -1,21 +1,53 @@
-console.log("hej");
+console.log("Vi er i produktlisten");
 
-const id = 1534;
-const url = `https://kea-alt-del.dk/t7/api/products/${id}`;
+// https://kea-alt-del.dk/t7/api/products
 
-const imagePath = `https://kea-alt-del.dk/t7/images/webp/640/${id}.webp`;
+// 1. Hente data:
+async function getData () {
+    const response = await fetch ("https://kea-alt-del.dk/t7/api/products?limit=10");
+    const data = await response.json();
+    // console.log(data);
 
-function hentData(){
-fetch(url)
-.then(res => res.json())
-.then(visProdukt);
-}
+    // 2. loope igennem dataen // 3. For hver af dem
+    data.forEach (showProduct); 
+    };
+    function showProduct (product) {
+    console.log(product);
+        // 4. fange vores template
+        const template = document.querySelector("#smallproductTemplate").content;
+        // console.log(template);
+        // 5. klone den
+        const copy = template.cloneNode(true);
+        // 6. skifte data
+            // 6.1. skiftning af tekst + billeder:
+            copy.querySelector("h3").textContent=product.productdisplayname;
+            copy.querySelector(".subtle").textContent=product.articletype;
+            copy.querySelector(".price").textContent=product.price;
 
-function visProdukt(produkt){
-    console.log(produkt);
-    document.querySelector("#model").textContent=produkt.productdisplayename;
-    document.querySelector("img").src = imagePath;
-}
+            // document.querySelector("img").src = imagePath;
+            
+            // 6.2 Hvordan man laver ting udsolgt
+            if(product.soldout){
+                copy.querySelector("article").classList.add("soldOut");
+            }
+            if(product.discount){
+                copy.querySelector("article").classList.add("onSale");
+            }
+        // 7. appende
+        document.querySelector("main").appendChild(copy);
+    }
+    // articletype:"Tshirts"
+    // brandname:"Nike"
+    // category:"Apparel"
+    // discount:null
+    // gender:"Men"
+    // id:1163
+    // price:895
+    // productdisplayname:"Sahara Team India Fanwear Round Neck Jersey"
+    // productionyear: 2011
+    // season: "Summer"
+    // soldout: 0
+    // subcategory: "Topwear"
+    // usagetype: "Sports"
 
-
-hentData();
+getData();
