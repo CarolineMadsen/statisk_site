@@ -2,6 +2,7 @@ console.log("Vi er i produktlisten");
 
 // https://kea-alt-del.dk/t7/api/products
 
+
 // 1. Hente data:
 async function getData () {
     const response = await fetch ("https://kea-alt-del.dk/t7/api/products?limit=10");
@@ -15,7 +16,10 @@ async function getData () {
     console.log(product);
         // 4. fange vores template
         const template = document.querySelector("#smallproductTemplate").content;
+        const id = product.id;
+        const imagePath = `https://kea-alt-del.dk/t7/images/webp/640/${id}.webp`;
         // console.log(template);
+
         // 5. klone den
         const copy = template.cloneNode(true);
         // 6. skifte data
@@ -23,8 +27,8 @@ async function getData () {
             copy.querySelector("h3").textContent=product.productdisplayname;
             copy.querySelector(".subtle").textContent=product.articletype;
             copy.querySelector(".price").textContent=product.price;
-
-            // document.querySelector("img").src = imagePath;
+            copy.querySelector("a").href = "produkt.html?id="+product.id
+            copy.querySelector("img").src = imagePath;
             
             // 6.2 Hvordan man laver ting udsolgt
             if(product.soldout){

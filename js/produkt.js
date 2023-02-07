@@ -1,8 +1,13 @@
 console.log("hej");
 
-const id = 1525;
-const url = `https://kea-alt-del.dk/t7/api/products/${id}`;
+// lav url search obejkt 
+const urlParams = new URLSearchParams (window.location.search);
 
+// find id
+const id = urlParams.get("id");
+
+// find Url og imagePath
+const url = `https://kea-alt-del.dk/t7/api/products/${id}`;
 const imagePath = `https://kea-alt-del.dk/t7/images/webp/640/${id}.webp`;
 
 function hentData(){

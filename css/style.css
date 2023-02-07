@@ -104,7 +104,7 @@ html {
     margin-bottom: 1rem;
   }
   .discounted p:last-child {
-    background: (red);
+    background: red;
     padding: 0.2rem;
   }
   
