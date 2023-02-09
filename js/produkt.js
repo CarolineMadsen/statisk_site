@@ -39,4 +39,5 @@ function visProdukt(produkt) {
   document.querySelector(".option_5").textContent = "42";
   document.querySelector(".option_6").textContent = "43";
 }
+
 hentData();

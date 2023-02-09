@@ -2,7 +2,7 @@ console.log("Vi er i produktlisten");
 
 const urlParams = new URLSearchParams(window.location.search);
 const cat = urlParams.get("cat");
-const url = `https://kea-alt-del.dk/t7/api/products?limit=20&category=${cat}`;
+const url = `https://kea-alt-del.dk/t7/api/products?limit=100&category=${cat}`;
 
 document.querySelector("h2").textContent = cat;
 

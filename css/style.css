@@ -6,7 +6,7 @@ html {
   scroll-behavior: smooth;
 }
 .mainNav h1 span {
-  display: inline-block;
+  display: flex;
   transform: scaleX(-1) translateX(-0.2rem);
   color: var(--off-color);
 }
